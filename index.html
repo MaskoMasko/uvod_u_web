@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@100;700&display=swap">
+</head>
+<body>
+    <div class="login_container">
+        <img class="fidit_logo_login" src="./assets/FIDIT-logo.svg" alt="FIDIT Logo" height="100" width="100" >
+        <div class="login_content_container">
+            <h1 class="login_title">Prijavite se</h1>
+            <form  method="post">
+                <p class="input_label">Korisničko ime</p>
+                <input class="login_input" type="text" name="username" required>
+                <p class="input_label">Lozinka</p>
+                <input class="login_input" type="password" name="password" required>
+            </form>
+            <a href="#" class="login_button" onclick="validateLogin()">Prijavi se</a>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

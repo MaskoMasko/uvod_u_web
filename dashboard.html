@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@100;700&display=swap">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="dashboard.html"><img src="./assets/Home.svg" alt="Dashboard" class="icon" height="25"
+                        width="25"></a></li>
+            <li><a href="mailto:persic.massimo@gmail.com"><img src="./assets/User_fill.svg" alt="Pošalji e-mail"
+                        class="icon" width="25" height="25"></a></li>
+            <li><a href="https://www.inf.uniri.hr/"><img src="./assets/globe.svg" alt="Inf UNIRI" class="icon"
+                        width="25" height="25"></a></li>
+            <li><a href="index.html"><img src="./assets/Sign_out_squre.svg" alt="Početna stranica" class="icon"
+                        width="25" height="25"></a></li>
+        </ul>
+    </nav>
+
+
+    <h1>Dobrošli na Web aplikaciju!</h1>
+
+    <div class="student_table_container">
+        <div class="student_table_header_wrapper">
+            <div class="student_table_header">
+                <p>Popis studenata</p>
+                <div class="student_table_header_searchbar">
+                    <p>Pretraži: </p>
+                    <input type="text" id="search" name="search">
+                </div>
+            </div>
+            <div class="student_table">
+                <table id="table">
+                    <tr>
+                        <th align="left" class="th-ime">Ime</th>
+                        <th align="left" class="th-prezime">Prezime</th>
+                        <th align="right" class="th-akcije">Akcije</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><br></td> 
+                    </tr>
+                    <tr>
+                        <td align="left"></td>
+                        <td align="left"></td>
+                        <td align="right">
+                            <img id="uredi_studenta" src="./assets/Edit_fill.svg" alt="Edit" width="20" height="20">
+                            <img src="./assets/Trash.svg" alt="Trash" width="20" height="20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><hr color="lightgray"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="student_form_container">
+        <div class="student_form_header">
+            <p>Unos novog studenta</p>
+        </div>
+        <div class="student_form">
+                <label class="input_label" for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime">
+                <label class="input_label" for="prezime">Prezime:</label>
+                <input type="text" id="prezime" name="prezime">
+                <a class="save_button" onclick="addEntry()">Spremi</a>
+        </div>
+    </div>
+
+
+<div id="modal" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Uredjivanje podataka</p>
+    <div class="student_form">
+        <form>
+            <label class="input_label" for="ime">Ime:</label>
+            <input type="text" id="ime" name="ime">
+            <label class="input_label" for="prezime">Prezime:</label>
+            <input type="text" id="prezime" name="prezime">
+            <a class="save_button">Spremi</a>
+        </form>
+    </div>
+  </div>
+
+</div>
+    
+</body>
+<script src="script.js"></script>
+
+</html>
