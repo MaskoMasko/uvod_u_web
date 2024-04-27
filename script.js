@@ -7,23 +7,6 @@ var btn = document.getElementById("uredi_studenta");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
 function validateLogin() {
   // Dohvaćanje unesenih vrijednosti korisničkog imena i lozinke
   var username = document.getElementsByName('username')[0].value;
@@ -40,8 +23,8 @@ function validateLogin() {
 }
 
 function addEntry() {
-  var firstName = document.getElementById("ime").value; 
-  var lastName = document.getElementById("prezime").value; 
+  var firstName = document.getElementById("add-ime").value; 
+  var lastName = document.getElementById("add-prezime").value; 
 
   var table = document.getElementById("table")
   var newRow = table.insertRow(table.rows.length); 
@@ -50,37 +33,35 @@ function addEntry() {
   var cellActions = newRow.insertCell(); 
   cellFirstName.innerHTML = firstName; 
   cellLastName.innerHTML = lastName; 
-  cellActions.innerHTML = ' <img id="uredi_studenta" src="./assets/Edit_fill.svg" alt="Edit" width="20" height="20"><img src="./assets/Trash.svg" alt="Trash" width="20" height="20">'; 
+  cellActions.innerHTML = ' <div class="th-akcije"><img id="uredi_studenta" onclick="editRow(this)" src="./assets/Edit_fill.svg" alt="Edit" width="20" height="20"><img src="./assets/Trash.svg" onclick="deleteRow(this)" alt="Trash" width="20" height="20"></div>'; 
   }
 // Deklaracija globalne varijable selectedRow
 var selectedRow;
 
 function editRow(button) {
-  // Postavljanje selectedRow na roditeljski redak gumba koji je kliknut
-  // (roditelj gumba je redak u tablici)
-  selectedRow = button.parentNode.parentNode;
+  selectedRow = button.parentNode.parentNode.parentNode;
 
   // Postavljanje vrijednosti unesenih imena i prezimena iz odabranog reda u odgovarajuća input polja za uredivanje
-  document.getElementById("ime").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("prezime").value = selectedRow.cells[1].innerHTML;
+  document.getElementById("edit-ime").value = selectedRow.cells[0].innerHTML;
+  document.getElementById("edit-prezime").value = selectedRow.cells[1].innerHTML;
 
   // Prikazivanje modala za uređivanje (postavljanje display-a na "block")
-  document.getElementById("editModal").style.display = "block";
+  document.getElementById("modal").style.display = "block";
 }
 
 function saveChanges() {
   // Postavljanje vrijednosti unesenih imena i prezimena iz input polja za uređivanje u odabrani redak u tablici
-  selectedRow.cells[0].innerHTML = document.getElementById("ime").value;
-  selectedRow.cells[1].innerHTML = document.getElementById("prezime").value;
+  selectedRow.cells[0].innerHTML = document.getElementById("edit-ime").value;
+  selectedRow.cells[1].innerHTML = document.getElementById("edit-prezime").value;
 
   closeModal();
 }
 
 function closeModal() {
   // Zatvaranje moda (postavljanje display-a na "none")
-  document.getElementById("editModal").style.display = "none";
+  document.getElementById("modal").style.display = "none";
 }
-function deleteRow() {
+function deleteRow(button) {
   // Provjerite je li odabran redak za brisanje
   if (selectedRow) {
       // Pronađite roditeljski element reda i uklonite ga iz tablice
@@ -88,8 +69,9 @@ function deleteRow() {
       // Očistite referencu na odabrani redak
       selectedRow = null;
   } else {
-      // Ako nema odabranog reda, ispišite poruku ili poduzmite odgovarajuće radnje
-      console.log("Nema odabranog reda za brisanje.");
+      selectedRow = button.parentNode.parentNode.parentNode;
+      selectedRow.parentNode.removeChild(selectedRow);
+      selectedRow = null;
   }
 }
 
@@ -100,26 +82,25 @@ function searchTable() {
   var rows = table.getElementsByTagName("tr");
 
   // Iteriraj kroz retke tablice
-  for (var i = 0; i < rows.length; i++) {
-      var found = false;
-      var cells = rows[i].getElementsByTagName("td");
-      
-      // Ignoriraj redove zaglavlja tablice
-      if (!rows[i].classList.contains('header')) {
-          // Iteriraj kroz ćelije u retku
-          for (var j = 0; j < cells.length; j++) {
-              var cell = cells[j];
-              // Provjeri sadrži li tekst koji je korisnik unio u polje za pretragu
-              if (cell) {
-                  var textValue = cell.textContent || cell.innerText;
-                  if (textValue.toUpperCase().indexOf(input) > -1) {
-                      found = true;
-                      break;
-                  }
-              }
-          }
-          // Prikazivanje/skrivanje retka ovisno o tome je li pronađen traženi tekst
-          rows[i].style.display = found ? "" : "none";
+  for (var i = 0; i < rows.length+1; i++) {
+    var found = false;
+    var cells = rows[i].getElementsByTagName("td");
+    console.log("im here")
+    // Check if it's not the header row
+      // Iterate through each cell in the current row
+      for (var j = 0; j < cells.length; j++) {
+        var cell = cells[j];
+        // Get the text content of the cell and convert it to uppercase for comparison
+        var textValue = cell.textContent || cell.innerText;
+        // Check if the cell's text content contains the search input value
+        console.log(textValue)
+        if (textValue.toUpperCase().indexOf(input) > -1) {
+          // If found, set found to true and break the loop
+          found = true;
+          break;
+        }
       }
+      // Show/hide the row based on whether the search input value was found
+      rows[i].style.display = found ? "" : "none";
   }
 }

@@ -5,17 +5,21 @@
 body {
     background-image: url('./assets/background.jpg'); 
     background-size: cover; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     overflow: hidden;
     margin: 0px
 }
+.login_container_wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
 .login_container{
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 560px;
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 0 5px #0000001a;
@@ -26,12 +30,9 @@ body {
     justify-content: center;
 }
 .login_title{
-    font-size: 27px;
+    font-size: 21px;
     text-align: center;
-}
-.input_label{
-    font-size: 15px;
-    margin: 7px 0px;
+    margin-bottom: 40px;
 }
 .login_button{
     font-size: 15px;
@@ -43,15 +44,18 @@ body {
     border-radius: 5px;
     justify-content: center;
     text-decoration: none;
+    width: 350px;
 }
 .login_content_container{
-    width:300px;
+    width:350px;
 }
 .login_input{
-    padding: 5px 0px;
+    padding: 10px;
+    margin-top: 5px;
     border-radius: 5px;
-    width: 100%;
+    width: 350px;
     border: 1px solid #294B79;
+    margin-bottom: 20px;
 }
 
 ul{
@@ -69,85 +73,130 @@ li{
 }
 nav{
     position: absolute;
-    left: 0
-}
-/* AASDASFDOPSMDFMOSDFMPSMDPFPMSDPMFPSMDFPMDSFMPS */
-.student_table_header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    left: 0;
+    top: 0;
 }
 .student_table_container{
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+    width: 60% !important;
 }
-.student_table_header_searchbar{
-    display: flex;
-    height: 20px;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
+.dashboard_heading{
+    font-size: 27px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    font-weight: 300;
 }
-.student_table_header_wrapper{
-    width: 95%;
+.dashboard_wrapper{
+    margin-left: 150px
 }
 .student_table{
     background-color: white;
     border-radius: 20px;
-    padding: 25px;
+    padding: 15px;
     box-shadow: 0 0 5px #0000001a;
 }
-table{
-    width: 100%;
-}
-.th-akcije {
-    width: 50px
-}
 .th-ime{
-    max-width: 100px
+    width: 150px;
+    word-wrap: break-word;
 }
 .th-prezime{
-    max-width: 100px
+    width: 250px;
 }
-hr{margin: 0px;}
-
-
-
-
-
-
-
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
 /* asdasdasdasdad */
+th {
+    text-align: left;
+}
+.th-akcije{
+    text-align:right !important;
+}
+th,td {
+    padding: 10px;
+}
+tr:not(:first-child) { 
+    border-bottom: 1px solid lightgray;
+}
 
 .student_form{
     background-color: white;
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 0 5px #0000001a;
-    width: auto;
+    /* width: auto; */
 }
-.save_button{
+.student_table_header{
+    display: flex;
+    justify-content: space-between;
+}
+.student_table_header_searchbar{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.content{
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 110px;
+}
+.student_form input[type="text"] {
+    /* width: 100%; */
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.enter-student_form input{
+    min-width: 300px;
+    margin-top: 5px;
+    padding:5px;
+}
+.enter-student_form{
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 5px #0000001a;
+}
+.enter_button{
+    display: block;
     font-size: 15px;
-    margin: 15px 0px;
     padding: 10px;
     color:white;
+    margin-top: 15px;
+    width: 150px;
     background-color: #294B79;
     border-radius: 5px;
     justify-content: center;
     text-decoration: none;
-}
-.student_form input[type="text"] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 5px;
+    text-align: center;
 }
 
-
+.student-form-container{
+    width: auto;
+}
+.student_form_header{
+    padding: 10px;
+}
+.save_student_form input{
+    min-width: 300px;
+    margin-top: 5px;
+    padding:5px;
+}
+.save_button{
+    display: block;
+    font-size: 15px;
+    padding: 10px;
+    color:white;
+    margin-top: 15px;
+    width: 150px;
+    background-color: #294B79;
+    border-radius: 5px;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+}
 /* 
-
 
 modal */
 
@@ -170,9 +219,9 @@ modal */
   .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    width: 350px;
+    padding: 25px;
+    box-shadow: 0 0 5px #0000001a;
   }
   
   /* The Close Button */

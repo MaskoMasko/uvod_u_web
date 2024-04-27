@@ -23,41 +23,32 @@
         </ul>
     </nav>
 
+    <div class="dashboard_wrapper">
+    <h1 class="dashboard_heading">Dobrošli na Web aplikaciju!</h1>
 
-    <h1>Dobrošli na Web aplikaciju!</h1>
-
+    <div class="content">
     <div class="student_table_container">
-        <div class="student_table_header_wrapper">
-            <div class="student_table_header">
-                <p>Popis studenata</p>
-                <div class="student_table_header_searchbar">
-                    <p>Pretraži: </p>
-                    <input type="text" id="search" name="search">
-                </div>
+        <div class="student_table_header">
+            <p>Popis studenata</p>
+            <div class="student_table_header_searchbar">
+                <p>Pretraži: </p>
+                <form>
+                    <input type="search" id="search" oninput="searchTable()" name="search">
+                </form>
             </div>
-            <div class="student_table">
-                <table id="table">
+        </div>
+        <div class="student_table">
+            <table id="table">
+                <thead>
                     <tr>
-                        <th align="left" class="th-ime">Ime</th>
-                        <th align="left" class="th-prezime">Prezime</th>
-                        <th align="right" class="th-akcije">Akcije</th>
+                        <th class="th-ime">Ime</th>
+                        <th class="th-prezime">Prezime</th>
+                        <th class="th-akcije">Akcije</th>
                     </tr>
-                    <tr>
-                        <td colspan="3"><br></td> 
-                    </tr>
-                    <tr>
-                        <td align="left"></td>
-                        <td align="left"></td>
-                        <td align="right">
-                            <img id="uredi_studenta" src="./assets/Edit_fill.svg" alt="Edit" width="20" height="20">
-                            <img src="./assets/Trash.svg" alt="Trash" width="20" height="20">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><hr color="lightgray"></td>
-                    </tr>
-                </table>
-            </div>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -65,34 +56,43 @@
 
     <div class="student_form_container">
         <div class="student_form_header">
-            <p>Unos novog studenta</p>
+            Dodaj novog studenta
         </div>
-        <div class="student_form">
-                <label class="input_label" for="ime">Ime:</label>
-                <input type="text" id="ime" name="ime">
-                <label class="input_label" for="prezime">Prezime:</label>
-                <input type="text" id="prezime" name="prezime">
-                <a class="save_button" onclick="addEntry()">Spremi</a>
+        <div class="enter-student_form">
+                <label for="ime">Ime:</label>
+                <br>
+                <input type="text" id="add-ime" name="ime">
+                <br>
+                <br>
+                <label for="prezime">Prezime:</label>
+                <br>
+                <input type="text" id="add-prezime" name="prezime">
+                <br>
+                <a class="enter_button" onclick="addEntry()">Dodaj</a>
         </div>
     </div>
-
+</div>
 
 <div id="modal" class="modal">
 
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Uredjivanje podataka</p>
-    <div class="student_form">
-        <form>
-            <label class="input_label" for="ime">Ime:</label>
-            <input type="text" id="ime" name="ime">
-            <label class="input_label" for="prezime">Prezime:</label>
-            <input type="text" id="prezime" name="prezime">
-            <a class="save_button">Spremi</a>
-        </form>
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Uređivanje podataka</h3>
+    <div class="save_student_form">
+            <label for="ime">Ime:</label>
+            <br>
+            <input type="text" id="edit-ime" name="ime">
+            <br>
+            <br>
+            <label for="prezime">Prezime:</label>
+            <br>
+            <input type="text" id="edit-prezime" name="prezime">
+            <br>
+            <a class="save_button" onclick="saveChanges()">Spremi promjene</a>
     </div>
   </div>
 
+</div>
 </div>
     
 </body>
