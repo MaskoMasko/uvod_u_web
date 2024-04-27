@@ -76,31 +76,20 @@ function deleteRow(button) {
 }
 
 function searchTable() {
-  // Dohvati potrebne HTML elemente
-  var input = document.getElementById("search").value.toUpperCase();
-  var table = document.getElementById("table").rows[1];
-  var rows = table.getElementsByTagName("tr");
-
-  // Iteriraj kroz retke tablice
-  for (var i = 0; i < rows.length+1; i++) {
-    var found = false;
-    var cells = rows[i].getElementsByTagName("td");
-    console.log("im here")
-    // Check if it's not the header row
-      // Iterate through each cell in the current row
-      for (var j = 0; j < cells.length; j++) {
-        var cell = cells[j];
-        // Get the text content of the cell and convert it to uppercase for comparison
-        var textValue = cell.textContent || cell.innerText;
-        // Check if the cell's text content contains the search input value
-        console.log(textValue)
-        if (textValue.toUpperCase().indexOf(input) > -1) {
-          // If found, set found to true and break the loop
-          found = true;
-          break;
-        }
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
       }
-      // Show/hide the row based on whether the search input value was found
-      rows[i].style.display = found ? "" : "none";
+    }       
   }
 }
